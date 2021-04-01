@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.6.0/dist/lux/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
@@ -16,7 +16,7 @@
     <header>
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="#">Everyone Is</a>
+            <a class="navbar-brand" href="#">Everyone Is <span is="type-async" id="type-text"></span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -25,7 +25,7 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item @(ViewData["Title"].Equals("Everyone Is") ? "active" : "" )">
                         <a class="nav-link" href="/">
-                            John
+                            Home
                         </a>
                     </li>
                     <li class="nav-item @(ViewData["Title"].Equals("Settings") ? "active" : "" )">
@@ -43,9 +43,12 @@
         </nav>
     </header>
     <div class="jumbotron">
-        <h1 class="display-3">@ViewData["Title"]</h1>
-        <p class="lead">@ViewData["Desc"]</p>
-        <hr class="my-4">
+        @if (ViewData["DontShow"] == null)
+        {
+            <h1 class="display-3">@ViewData["Title"]</h1>
+            <p class="lead">@ViewData["Desc"]</p>
+            <hr class="my-4">
+        }
         @RenderBody()
     </div>
 
@@ -56,6 +59,7 @@
         </div>
     </footer>
 
+    <script src="~/js/type_async.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
