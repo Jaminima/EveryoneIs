@@ -7,10 +7,15 @@
     let names = [
         "John","James","Mark","Eclaire","Adolf","Infected"
     ];
-    let n;
+    let n="";
+    let n_last="";
 
     while (true) {
-        n = names[Math.floor(Math.random() * names.length)];
+        while (n===n_last) {
+            n = names[Math.floor(Math.random() * names.length)];
+        }
+        n_last = n;
+
         await node.type(n);
         await sleep(5000)
         await node.delete(n);
