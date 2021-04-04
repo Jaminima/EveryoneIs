@@ -1,0 +1,20 @@
+﻿@page "/settings"
+
+    <title>Settings</title>
+
+    <h1 class="display-3">Welcome</h1>
+    <p class="lead">Welcome</p>
+    <hr class="my-4">
+
+    <p>Current count: @currentCount</p>
+
+    <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+    @code {
+        private int currentCount = 0;
+
+        private void IncrementCount()
+        {
+            currentCount++;
+        }
+    }

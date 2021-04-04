@@ -1,0 +1,49 @@
+﻿@inherits LayoutComponentBase
+
+<body>
+    <header>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="#">Everyone Is <span is="type-async" id="type-text"></span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav mr-auto">
+                    @{ 
+                        string title = "";
+                        if (Body.Target.GetType() == typeof(RouteView)) title = ((RouteView)Body.Target).RouteData.PageType.Name;
+                    }
+                    <li class="nav-item @(title.Equals("Index") ? "active" : "" )">
+                        <a class="nav-link" href="/">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item @(title.Equals("Settings") ? "active" : "" )">
+                        <a class="nav-link" href="/settings">
+                            Settings
+                        </a>
+                    </li>
+                    <li class="nav-item @(title.Equals("About") ? "active" : "" )">
+                        <a class="nav-link" href="/about">
+                            About
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="jumbotron">
+        @Body
+    </div>
+
+    <footer class="bg-primary text-center text-lg-start" style="position:fixed; bottom:0; min-width: 100vw;">
+        <div class="text-center p-3" style="display: inline-flex">
+            <a class="text-light footer-item" href="https://github.com/Jaminima/Spotter-Azure" target="_blank">Github</a>
+            <a>     </a>
+            <a class="text-light footer-item" href="https://www.linkedin.com/in/oscar-davies/" target="_blank">LinkedIn</a>
+        </div>
+    </footer>
+</body>
